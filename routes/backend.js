@@ -20,7 +20,7 @@ appRoutes.get('/users', (req, res, next) =>{
 
 appRoutes.use('/', (req, res, next) =>{
     console.log("ERROR - URL cannot be found.");
-    res.sendFile(path.join(customPath,"views", "404.html"));
+    res.render( "404.pug", {DocTitle: "The 404 Error page from pug!"});
     //Use the .use() function as a catch for any routes that aren't specified in the site/app.
 });
 

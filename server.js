@@ -10,6 +10,13 @@ server.use(bodyParser.urlencoded({extended: false})); // parsing the html data f
 //must happen before any of the middleware functions are accessed. So must be called before server.use(appRoutes).
 //================================================================
 
+server.set('view engine', 'pug'); // Setting the view engine to use pug.
+server.set('views', 'views')// Telling the view engine where to find the views for the app. 
+//must happen before any of the middleware functions are accessed. So must be called before server.use(appRoutes).
+//================================================================
+
+
+
 
 server.use(appRoutes)// outsourced routes for the app. 
 
