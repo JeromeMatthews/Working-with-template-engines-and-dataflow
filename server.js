@@ -1,10 +1,11 @@
 const express = require('express'); // pulling in express
 const server = express();// localizing express
-
+const path = require('path');// localizing path package from node. 
+const customPath = require('./utils/path');// importing the custom path variable from utils to set the app root automatically.
 
 server.get('/',(req, res, next) =>{
      console.log("server started, now listening on port: 5000");
-     res.send('<h1>Now viewing server root...</h1>');
+     res.sendFile(path.join(customPath,"views", "index.html"));
 
 });
 
