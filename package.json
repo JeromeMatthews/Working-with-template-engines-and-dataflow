@@ -1,0 +1,11 @@
+{
+  "name": "node-exe-xp-template-engines-and-dataflow",
+  "version": "1.0.0",
+  "description": "Second series of practice project tasks. Working with templates and communicating data between routes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jerome Matthews",
+  "license": "ISC"
+}
