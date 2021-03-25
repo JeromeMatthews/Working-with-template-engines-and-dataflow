@@ -9,7 +9,7 @@ const userData = []; //hold the incoming data from the request body.
 appRoutes.get('/',(req, res, next) =>{
     
     console.log("server started, now listening on port: 5000");
-    res.render("./pug/index.pug", {DocTitle:"App index page"});
+    res.render("./ejs/index.ejs", {DocTitle:"App index page"});
 
 
 });
@@ -22,7 +22,7 @@ appRoutes.post('/users', (req, res, next) =>{
    
     userData.push(req.body.username);// puts the entered data into the user data array.
     console.log(userData); 
-    res.render("./pug/users.pug", 
+    res.render("./ejs/users.ejs", 
     {
     DocTitle: "Added User names",
     userNames: userData 
@@ -38,9 +38,9 @@ appRoutes.post('/users', (req, res, next) =>{
 });
 
 
-appRoutes.use('/', (req, res, next) =>{
+appRoutes.use((req, res, next) =>{
     console.log("ERROR - URL cannot be found.");
-    res.render( "./pug/404.pug", {DocTitle: "The 404 Error page from pug!"});
+    res.status(404).render( "./ejs/404.ejs", {DocTitle: "This 404 Error page was generated in EJS!"});
     //Use the .use() function as a catch for any routes that aren't specified in the site/app.
 });
 
