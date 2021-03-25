@@ -6,7 +6,7 @@ const customPath = require('../utils/path');// importing the custom path variabl
 
 appRoutes.get('/',(req, res, next) =>{
     console.log("server started, now listening on port: 5000");
-    res.sendFile(path.join(customPath,"views", "index.html"));
+    res.render("./pug/index.pug", {DocTitle:"App index page"});
 
 
 });
@@ -14,13 +14,13 @@ appRoutes.get('/',(req, res, next) =>{
 
 appRoutes.get('/users', (req, res, next) =>{
     console.log("Now acessing the users route...");
-    res.sendFile(path.join(customPath,"views", "users.html"));
+    res.render("./pug/users.pug", {DocTitle: "Added User names"});
 });
 
 
 appRoutes.use('/', (req, res, next) =>{
     console.log("ERROR - URL cannot be found.");
-    res.render( "404.pug", {DocTitle: "The 404 Error page from pug!"});
+    res.render( "./pug/404.pug", {DocTitle: "The 404 Error page from pug!"});
     //Use the .use() function as a catch for any routes that aren't specified in the site/app.
 });
 
