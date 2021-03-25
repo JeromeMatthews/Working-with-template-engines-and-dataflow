@@ -4,7 +4,10 @@ const path = require('path');// localizing path package from node.
 const customPath = require('../utils/path');// importing the custom path variable from utils to set the app root automatically.
 
 
+const userData = []; //hold the incoming data from the request body. 
+
 appRoutes.get('/',(req, res, next) =>{
+    
     console.log("server started, now listening on port: 5000");
     res.render("./pug/index.pug", {DocTitle:"App index page"});
 
@@ -12,9 +15,26 @@ appRoutes.get('/',(req, res, next) =>{
 });
 
 
-appRoutes.get('/users', (req, res, next) =>{
-    console.log("Now acessing the users route...");
-    res.render("./pug/users.pug", {DocTitle: "Added User names"});
+
+
+appRoutes.post('/users', (req, res, next) =>{
+    console.log("Now acessing the users route...[VIA POST METHOD REQUEST]");
+   
+    userData.push(req.body.username);// puts the entered data into the user data array.
+    console.log(userData); 
+    res.render("./pug/users.pug", 
+    {
+    DocTitle: "Added User names",
+    userNames: userData 
+    /* 
+    userNames has all the data passed into the array (userData)
+    from the request body that was captured from the form on the index page.
+    Now that being passed into the users.pug file can used in the view.
+    */
+    }
+        
+
+    );
 });
 
 
